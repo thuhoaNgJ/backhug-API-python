@@ -38,10 +38,15 @@ def createBooking(access_token, location_id, company_id,
     resp = requests.post(url, json=payload, headers=headers)
     return resp
 
-def checkCreateBookingSuccess(access_token):
-    resp = createBooking(access_token, 821, 276, 1497, 20, "2025-12-06 14:00", 0, "VND")
+def checkCreateBookingSuccess(access_token, location_id, company_id,
+                  bed_id,slot_duration, start_time,
+                  price, currency):
+    resp = createBooking(access_token, location_id, company_id,
+                  bed_id,slot_duration, start_time,
+                  price, currency)
+    # resp = createBooking(access_token, 821, 276, 1497, 20, "2025-12-06 14:00", 0, "VND")
     if resp.status_code in (200, 201):
-        print("Tạo booking thành công cho user")
+        print("Tạo booking thành công cho user") 
         return True
     return False
 
@@ -65,7 +70,10 @@ if __name__ == "__main__":
 
     # create booking on behalf of user
     access_token_behalf = getAccessTokenOnBehalfOfUser(access_token, "nhokun050+7@gmail.com")
-    checkCreateBookingSuccess(access_token_behalf)
+    checkCreateBookingSuccess(access_token_behalf, location_id=821, company_id=276,
+                              bed_id=1497, slot_duration=20,
+                              start_time="2025-12-06 14:00",
+                              price=0, currency="VND")
     checkCreateBookingFail(access_token_behalf)
 
     # user create booking
@@ -73,4 +81,8 @@ if __name__ == "__main__":
     password1 = "Backhug123"
     refresh_token1 = setup.login(email1, password1)
     access_token1 = setup.create_access_token(refresh_token)
-    checkCreateBookingSuccess(access_token1)
+    checkCreateBookingSuccess(access_token1, location_id=821, company_id=276,
+                              bed_id=1497, slot_duration=20,
+                              start_time="2025-12-06 15:00",
+                              price=0, currency="VND")
+    
