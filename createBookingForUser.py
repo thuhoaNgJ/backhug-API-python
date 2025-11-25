@@ -69,20 +69,20 @@ if __name__ == "__main__":
     access_token = setup.create_access_token(refresh_token)
 
     # create booking on behalf of user
-    access_token_behalf = getAccessTokenOnBehalfOfUser(access_token, "nhokun050+7@gmail.com")
-    checkCreateBookingSuccess(access_token_behalf, location_id=821, company_id=276,
-                              bed_id=1497, slot_duration=20,
-                              start_time="2025-12-06 14:00",
-                              price=0, currency="VND")
-    checkCreateBookingFail(access_token_behalf)
+    # access_token_behalf = getAccessTokenOnBehalfOfUser(access_token, "nhokun050+7@gmail.com")
+    # checkCreateBookingSuccess(access_token_behalf, location_id=821, company_id=276,
+    #                           bed_id=1497, slot_duration=20,
+    #                           start_time="2025-12-06 14:00",
+    #                           price=0, currency="VND")
+    # checkCreateBookingFail(access_token_behalf)
 
     # user create booking
     email1 = "nhokun050+7@gmail.com"
     password1 = "Backhug123"
     refresh_token1 = setup.login(email1, password1)
-    access_token1 = setup.create_access_token(refresh_token)
+    access_token1 = setup.create_access_token(refresh_token1)
     checkCreateBookingSuccess(access_token1, location_id=821, company_id=276,
                               bed_id=1497, slot_duration=20,
-                              start_time="2025-12-06 15:00",
+                              start_time="2025-12-06 19:00",
                               price=0, currency="VND")
     
