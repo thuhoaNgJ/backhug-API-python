@@ -179,6 +179,7 @@ if __name__ == "__main__":
     password1 = "Backhug12345"
     refresh_token1 = setup.login(email1, password1)
     access_token1 = setup.create_access_token(refresh_token1)
+    
     # checkCreateBookingSuccess(access_token1, location_id=821, company_id=276,
     #                           bed_id=1497, slot_duration=20,
     #                           start_time="2025-12-03 19:00",
